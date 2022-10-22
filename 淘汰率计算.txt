@@ -1,0 +1,24 @@
+缺陷芯片淘汰率计算
+叶中盛
+2022/7/12
+
+（缺陷芯片 - 无效边缘标记芯片）/有效芯片
+软件：vidas 
+数据库：xdms
+需要将中心（0，0）平移变换到重心，统一多张晶圆的位置
+产品信息文档地址：
+\\Jkfs\营运系统\器件与电性测试工程部\YE&EDA部\01.EDA\8. YMS&DMS\maintance\Golden Map
+
+
+产品流程 阈值表格：
+select * from AUTOINK_PROD_INFO--user_tables
+
+
+选取 相关信息 SQL
+select Product,Size_keylayers,size_ooc,size_defectsize,substr(Product,0,5) as my_Product
+from AUTOINK_PROD_INFO 
+where 1=1 
+AND defectinkflag='Y'
+
+WAFER_X：重心到defect的精确向量
+CENTER_X: 中心芯片左下角到重心的向量
